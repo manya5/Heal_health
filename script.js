@@ -247,35 +247,6 @@ function initReveal() {
   reveals.forEach((item) => observer.observe(item));
 }
 
-/* --- Contact Form --- */
-function initForm() {
-  const form = document.getElementById('pilotForm');
-  const note = document.getElementById('formNote');
-  if (!form || !note) return;
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    const name = formData.get('name') || 'there';
-
-    // Button animation
-    const btn = form.querySelector('button[type="submit"]');
-    if (btn) {
-      btn.textContent = 'Submitting...';
-      btn.disabled = true;
-      setTimeout(() => {
-        note.textContent = `Thanks, ${name}. Your pilot request has been captured in the front-end demo. Connect this form to your CRM or backend for production.`;
-        note.classList.add('success');
-        btn.textContent = 'Submitted ✓';
-        setTimeout(() => {
-          form.reset();
-          btn.textContent = 'Submit pilot request';
-          btn.disabled = false;
-        }, 3000);
-      }, 800);
-    }
-  });
-}
 
 /* --- Footer Year --- */
 function initYear() {
@@ -312,7 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLayerTabs();
   initRoiCalculator();
   initReveal();
-  initForm();
   initYear();
   initSmoothScroll();
 });
